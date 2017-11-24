@@ -141,7 +141,7 @@ def encontrarSlot():
 	conn = mysql.connector.connect(user='addy', password='hola1234',
 			                      host='localhost',
 			                      database='test')
-	cur = conn.cursor(buffered=True)
+	cur = conn.cursor()
 	## obtener datos
 	cur.execute("SELECT slot, tipo,color FROM clothes")
 	row = cur.fetchone()
@@ -163,5 +163,5 @@ def encontrarSlot():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='', debug=True)
 

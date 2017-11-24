@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Closets RaspBerry</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="Cache-Control" content="no-cache, no-store,must-revalidate">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="0">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/>
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
+		<![endif]-->
+		<!-- bootstrap -->
+		<link href="{{ url_for('static',filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">      
+		<link href="{{ url_for('static',filename='bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet">
+		
+		<link href="{{ url_for('static',filename='themes/css/bootstrappage.css') }}" rel="stylesheet"/>
+		
+		<!-- global styles -->
+		<link href="{{ url_for('static',filename='themes/css/flexslider.css') }}" rel="stylesheet"/>
+		<link href="{{ url_for('static',filename='themes/css/main.css') }}" rel="stylesheet"/>
+
+		<!-- scripts -->
+		<script src="{{ url_for('static',filename='themes/js/jquery-1.7.2.min.js') }}"></script>
+		<script src="{{ url_for('static',filename='bootstrap/js/bootstrap.min.js') }}"></script>				
+		<script src="{{ url_for('static',filename='themes/js/superfish.js') }}"></script>	
+		<script src="{{ url_for('static',filename='themes/js/jquery.scrolltotop.js') }}"></script>
+		<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+    <body>		
+		
+		<div id="wrapper" class="container">
+			
+			
+			<section class="header_text">
+				Prendas disponibles en el closet. 
+				<br/>
+				RaspBerry PI
+				<br/>
+				<a href=""><button class="btn btn-inverse" id="botonFoto" onclick="tomarFoto()">Tomar Foto</button></a>	
+			</section>
+
+			<section class="main-content">
+				<div class="row">
+					<!--
+					{% for row in results %}
+					      <tr>
+					         <td>{{ row[0] }}</td>
+					         <td>{{ row[1] }}</td>
+					         <td>{{ row[2] }}</td>
+					         <td>{{ row[3] }}</td>
+					         <br>
+					      </tr>
+					{% endfor %} -->
+					
+
+					<div class="span12">													
+						<div class="row">
+							<div class="span12">
+								<h4 class="title">
+									<span class="pull-left"><span class="text"><span class="line">Prendas <strong>Top</strong></span></span></span>			
+						 		</h4>
+								<div id="myCarousel" class="myCarousel carousel slide">
+									<div class="carousel-inner">
+										<div class="active item">
+											<ul class="thumbnails">	
+												{% for row in results %}
+													<li class="span3">
+														<div class="product-box">
+															<span class="sale_tag"></span>
+															<p><a href=""><img src="static/themes/images/clothes/{{row[3]}}"class="rotate90" alt="" /></a></p>
+															<br/>
+															<br/>
+															<br/>
+															<h4 class="title">
+																<span class="text"><span class="line">Color: <strong>{{row[2]}}</strong></span></span>		
+						 									</h4>
+															<a href=""><button class="btn btn-inverse" onclick="elimina({{ row[0] }})">Sacar</button></a>		
+														</div>
+													</li>									
+												{% endfor %}
+											</ul>
+										</div>
+										
+									</div>							
+								</div>
+							</div>						
+						</div>
+						<br/>
+						<div class="row">
+							<div class="span12">
+								<h4 class="title">
+									<span class="pull-left"><span class="text"><span class="line">Pantalon <strong>Falda</strong></span></span></span>			
+						 		</h4>
+								<div id="myCarousel" class="myCarousel carousel slide">
+									<div class="carousel-inner">
+										<div class="active item">
+											<ul class="thumbnails">	
+												{% for row in resultsDos %}
+													<li class="span3">
+														<div class="product-box">
+															<span class="sale_tag"></span>
+															<p><a href=""><img src="static/themes/images/clothes/{{row[3]}}"class="rotate90" alt="" /></a></p>
+															<br/>
+															<br/>
+															<br/>
+															<h4 class="title">
+																<span class="text"><span class="line">Color: <strong>{{row[2]}}</strong></span></span>		
+						 									</h4>
+															<a href=""><button class="btn btn-inverse" onclick="elimina({{ row[0] }})">Sacar</button></a>		
+														</div>
+													</li>									
+												{% endfor %}
+											</ul>
+										</div>
+										
+									</div>							
+								</div>
+							</div>						
+						</div>
+						<br/>
+						<div class="row feature_box">						
+							<div class="span4">
+								<div class="service">
+									<div class="responsive">	
+										<img src="{{ url_for('static',filename='themes/images/feature_img_2.png') }}" alt="" />
+										<h4>MODERN <strong>DESIGN</strong></h4>
+										<p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>									
+									</div>
+								</div>
+							</div>
+							<div class="span4">	
+								<div class="service">
+									<div class="customize">			
+										<img src="{{ url_for('static',filename='themes/images/feature_img_1.png') }}" alt="" />
+										<h4>FREE <strong>SHIPPING</strong></h4>
+										<p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
+									</div>
+								</div>
+							</div>
+							<div class="span4">
+								<div class="service">
+									<div class="support">	
+										<img src="{{ url_for('static',filename='themes/images/feature_img_3.png') }}" alt="" />
+										<h4>24/7 LIVE <strong>SUPPORT</strong></h4>
+										<p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
+									</div>
+								</div>
+							</div>	
+						</div>		
+					</div>				
+				</div>
+			</section>			
+			<section id="footer-bar">
+				<div class="row">
+					<div class="span3">
+						<h4>Navigation</h4>
+						<ul class="nav">
+							<li><a href="./index.html">Homepage</a></li>  
+							<li><a href="./about.html">About Us</a></li>
+							<li><a href="./contact.html">Contac Us</a></li>
+							<li><a href="./cart.html">Your Cart</a></li>
+							<li><a href="./register.html">Login</a></li>							
+						</ul>					
+					</div>
+					<div class="span4">
+						<h4>My Account</h4>
+						<ul class="nav">
+							<li><a href="#">My Account</a></li>
+							<li><a href="#">Order History</a></li>
+							<li><a href="#">Wish List</a></li>
+							<li><a href="#">Newsletter</a></li>
+						</ul>
+					</div>
+					<div class="span5">
+						<p class="logo"><img src="{{ url_for('static',filename='themes/images/logo.png') }}" class="site_logo" alt=""></p>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
+						<br/>
+						<span class="social_icons">
+							<a class="facebook" href="#">Facebook</a>
+							<a class="twitter" href="#">Twitter</a>
+							<a class="skype" href="#">Skype</a>
+							<a class="vimeo" href="#">Vimeo</a>
+						</span>
+					</div>					
+				</div>	
+			</section>
+			<section id="copyright">
+				<span>Copyright 2013 bootstrappage template  All right reserved.</span>
+			</section>
+		</div>
+		<script src="{{ url_for('static',filename='themes/js/common.js') }}"></script>
+		<script src="{{ url_for('static',filename='themes/js/jquery.flexslider-min.js') }}"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(document).ready(function() {
+					$('.flexslider').flexslider({
+						animation: "fade",
+						slideshowSpeed: 4000,
+						animationSpeed: 600,
+						controlNav: false,
+						directionNav: true,
+						controlsContainer: ".flex-container" // the container that holds the flexslider
+					});
+				});
+			});
+
+			function elimina(slot)
+			{
+				$.post('/dispensar/'+slot);
+				alert(slot);
+			}
+
+			function tomarFoto()
+			{
+				alert("Toma foto");
+				$("#botonFoto").prop('disabled', true);
+				$.post('/camera', function(data){
+					$("#botonFoto").prop('disabled', false);
+					alert("Ingresamos tu ropa");
+				});
+				console.log("Tome foto");
+			}
+		</script>
+    </body>
+</html>

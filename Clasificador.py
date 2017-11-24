@@ -63,7 +63,8 @@ class piClasificador(object):
 	    tipo="pantalon"
 	 return tipo
 
-    def agregar(self,slot,direccion):
+    def agregar(self,slot,var):
+	 direccion = "/home/pi/webapp/static/themes/images/clothes/"+var
 	 color= self.classify_color(direccion)
 	 tipo = self.classifyTipo (direccion)
 	 cnx = mysql.connector.connect(user='addy', password='hola1234',
@@ -73,7 +74,7 @@ class piClasificador(object):
 	 cursor = cnx.cursor()
 	 cursor.execute("""INSERT into clothes (slot, tipo,color,url)
 			          values (%s, %s,%s,%s)""",
-			          (slot,tipo,color,direccion))
+			          (slot,tipo,color,var))
 	
 	 cnx.commit()
 	 cursor.close()

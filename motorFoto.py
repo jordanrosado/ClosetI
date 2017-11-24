@@ -14,7 +14,7 @@ StepCounter = 0
 gpio.output(23, False)
 gpio.output(25, False) # ENABLE
 
-while StepCounter < 100:
+while StepCounter < 50:
     #turning the gpio on and off tells the easy driver to take one step
     gpio.output(24, True)
     time.sleep(0.033)

@@ -18,16 +18,16 @@ class piCamera(object):
             s, img = cam.read()
             if s:
                waitKey(30) 
-               imwrite("/home/pi/webapp/clothes/"+ str(variable) +".jpg",img)
+               imwrite("/home/pi/webapp/static/themes/images/clothes/"+ str(variable) +".jpg",img)
                cam.release()
 	    time.sleep(1)
 	    cam.release()
-	return "/home/pi/webapp/clothes/"+ str(variable) +".jpg"	
+	return str(variable) +".jpg"	
         
     def delete(self, value):
 	while self.validar(value)==0:
             try:
-                os.remove("/home/pi/webapp/clothes/" + str(value) +".jpg")
+                os.remove("/home/pi/webapp/static/themes/images/clothes/" + str(value) +".jpg")
                 print("true")
             except:
                 print("false")
@@ -35,7 +35,7 @@ class piCamera(object):
 	
 	
     def validar(self, slot):
-	archivo = "/home/pi/webapp/clothes/"+ str(slot) +".jpg"
+	archivo = "/home/pi/webapp/static/themes/images/clothes/"+ str(slot) +".jpg"
 	try:
     	    with open(archivo, 'r') as file:
         	file = file.read()
