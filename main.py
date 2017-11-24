@@ -29,7 +29,8 @@ def main():
 	sql2 = "SELECT * FROM clothes WHERE tipo='pantalon'"	
 	cursor.execute(sql2)
 	resultadosDos = cursor.fetchall()
-	return render_template('index.html', results=resultados, resultsDos=resultadosDos)
+	cache = time.time()
+	return render_template('index.html', results=resultados, resultsDos=resultadosDos, cacheWeb = cache)
 
 @app.route("/camera", methods=['POST'])
 def camera():

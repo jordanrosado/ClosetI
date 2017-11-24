@@ -72,14 +72,14 @@
 													<li class="span3">
 														<div class="product-box">
 															<span class="sale_tag"></span>
-															<p><a href=""><img src="static/themes/images/clothes/{{row[3]}}"class="rotate90" alt="" /></a></p>
+															<p><a href=""><img src="static/themes/images/clothes/{{row[3]}}?{{cacheWeb}}" class="rotate90 img-responsive" alt="" /></a></p>
 															<br/>
 															<br/>
 															<br/>
 															<h4 class="title">
 																<span class="text"><span class="line">Color: <strong>{{row[2]}}</strong></span></span>		
 						 									</h4>
-															<a href=""><button class="btn btn-inverse" onclick="elimina({{ row[0] }})">Sacar</button></a>		
+															<a href=""><button class="btn btn-inverse botonSacar" onclick="elimina({{ row[0] }})">Sacar</button></a>		
 														</div>
 													</li>									
 												{% endfor %}
@@ -104,7 +104,7 @@
 													<li class="span3">
 														<div class="product-box">
 															<span class="sale_tag"></span>
-															<p><a href=""><img src="static/themes/images/clothes/{{row[3]}}"class="rotate90" alt="" /></a></p>
+															<p><a href=""><img src="static/themes/images/clothes/{{row[3]}}?{{cacheWeb}}" class="rotate90" style="width=60px; height=60px;" alt="" /></a></p>
 															<br/>
 															<br/>
 															<br/>
@@ -219,8 +219,10 @@
 			{
 				alert("Toma foto");
 				$("#botonFoto").prop('disabled', true);
+				$(".botonSacar").prop('disabled', true);
 				$.post('/camera', function(data){
 					$("#botonFoto").prop('disabled', false);
+					$(".botonSacar").prop('disabled', false);
 					alert("Ingresamos tu ropa");
 				});
 				console.log("Tome foto");
